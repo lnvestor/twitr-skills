@@ -44,10 +44,13 @@ Install one instead of all five with `--skill <name>`.
 ## Setup
 
 **1. A wallet.** Connect [AgentCash](https://agentcash.dev) as an MCP connector, or any
-x402-capable client, and fund it with USDC on Base, Solana, or Tempo.
+x402-capable client, and fund it with USDC on Base, Solana, or Tempo. Reads cost
+$0.0012–0.012 each, so $5 covers thousands of calls — and your client's per-call cap
+(AgentCash defaults to $5) is your spend limit; no call can exceed it.
 
 **2. There is no step two.** No signup, no dashboard, no key. The first call returns HTTP 402
-with the exact price; your client pays and retries automatically.
+with the exact price — that's the quote, not an error; your client pays and retries
+automatically.
 
 Scheduling `x-presence`? See
 [`scheduling.md`](skills/x-presence/references/scheduling.md) — verified commands for Claude Code
