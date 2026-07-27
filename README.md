@@ -1,5 +1,7 @@
 # twitr.sh agent skills
 
+[![skills.sh](https://skills.sh/b/lnvestor/twitr-skills)](https://skills.sh/lnvestor/twitr-skills)
+
 Agent Skills for [twitr.sh](https://twitr.sh) — a pay-per-call X/Twitter API for AI agents.
 **No API key, no signup, no subscription.** Your agent's wallet pays a fraction of a cent per
 request in USDC over [x402](https://x402.org) or MPP.
@@ -9,7 +11,7 @@ Works with any skill-aware agent: Claude Code, Cursor, Copilot, OpenClaw, Hermes
 ## Install
 
 ```sh
-npx skills add lnvestor/twitr-skills --skill x-presence
+npx skills add lnvestor/twitr-skills
 ```
 
 Swap the skill name, or install several:
