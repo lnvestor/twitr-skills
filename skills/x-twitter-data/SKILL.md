@@ -17,7 +17,7 @@ metadata:
 | Timelines, follower graphs, engagement lists | `POST /api/tools/x_timeline` |
 | List timelines, members, followers | `POST /api/tools/x_lists` |
 | Community info, members, posts, in-community search | `POST /api/tools/x_communities` |
-| Trending topics by region/category | `POST /api/tools/x_radar` |
+| Trending topics by region/category | `POST /api/tools/radar` (tool name `x_radar`; category: general\|tech\|dev\|science\|culture\|politics\|business\|entertainment) |
 
 Base URL `https://twitr.sh`. Every call is one POST. Prices are per returned item on the volume
 tools, ~$0.0012 per unit, floor $0.001.

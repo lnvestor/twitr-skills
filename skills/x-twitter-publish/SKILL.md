@@ -22,7 +22,7 @@ metadata:
 `x_compose` is priced at the floor (~$0.001), so draft several and keep the best.
 
 ```
-POST https://twitr.sh/api/tools/x_compose
+POST https://twitr.sh/api/tools/compose
 { "step": "generate", "topic": "why 402 beats API keys for agents",
   "goal": "be known for practical agent-payment writing",
   "tone": "direct, dry, technical — no emoji",

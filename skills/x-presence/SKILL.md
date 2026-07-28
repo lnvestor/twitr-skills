@@ -109,7 +109,7 @@ than ~12 hours (late replies read as automated).
 **3. Draft** (~$0.001 each — draft freely, keep the best)
 
 ```
-POST https://twitr.sh/api/tools/x_compose
+POST https://twitr.sh/api/tools/compose
 { "step": "generate", "topic": "<what you're answering + your angle>",
   "goal": "<profile.goal>", "tone": "<voice.tone>",
   "styleUsername": "<voice.styleUsername>",
