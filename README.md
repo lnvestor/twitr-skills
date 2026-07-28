@@ -45,13 +45,45 @@ Install one instead of all five with `--skill <name>`.
 ## Setup
 
 **1. A wallet.** Connect [AgentCash](https://agentcash.dev) as an MCP connector, or any
-x402-capable client, and fund it with USDC on Base, Solana, or Tempo. Reads cost
+x402-capable client, and fund it with USDC on Base, Solana, or Tempo — **first time? open the
+quickstart below**. Reads cost
 $0.0012–0.012 each, so $5 covers thousands of calls — and your client's per-call cap
 (AgentCash defaults to $5) is your spend limit; no call can exceed it.
 
 **2. There is no step two.** No signup, no dashboard, no key. The first call returns HTTP 402
 with the exact price — that's the quote, not an error; your client pays and retries
 automatically.
+
+<details>
+<summary><b>First time with agent wallets?</b> One command, ~2 minutes — and it may pay <i>you</i>.</summary>
+
+<br>
+
+**1. Onboard** (creates a local wallet, installs the AgentCash skill, and wires up MCP for your agent):
+
+```sh
+npx agentcash@latest onboard
+```
+
+Visiting [agentcash.dev/onboard](https://agentcash.dev/onboard) first and connecting GitHub/X/LinkedIn
+gets you a claim code worth **up to $25 in free USDC** — often enough to run these skills for weeks
+without depositing anything.
+
+**2. Fund it** (skip if the bonus covered you):
+
+```sh
+npx agentcash fund
+```
+
+Guided flow with card on-ramp and bridging. No minimum — $5 on Base covers thousands of reads.
+
+**3. Check it works** — ask your agent *"What is my AgentCash balance?"* If it answers with a number,
+you're done: the next twitr.sh call will quote its price in a 402 and your wallet pays automatically.
+
+Claude Code users can alternatively install just the MCP server:
+`claude mcp add agentcash --scope user -- npx -y agentcash@latest`
+
+</details>
 
 Scheduling `x-presence`? See
 [`scheduling.md`](skills/x-presence/references/scheduling.md) — verified commands for Claude Code
