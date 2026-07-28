@@ -44,18 +44,22 @@ Install one instead of all five with `--skill <name>`.
 
 ## Setup
 
-**1. A wallet.** Connect [AgentCash](https://agentcash.dev) as an MCP connector, or any
-x402-capable client, and fund it with USDC on Base, Solana, or Tempo — **first time? open the
-quickstart below**. Reads cost
-$0.0012–0.012 each, so $5 covers thousands of calls — and your client's per-call cap
-(AgentCash defaults to $5) is your spend limit; no call can exceed it.
+**1. A wallet.** Any x402/MPP-capable wallet works — pick one below. Fund it with a few
+dollars of USDC; reads cost $0.0012–0.012 each, so **$5 covers thousands of calls**, and your
+client's per-call cap is a hard spend limit.
+
+| Wallet | Start with | Pays on |
+|:--|:--|:--|
+| [AgentCash](https://agentcash.dev) ⭐ recommended | `npx agentcash@latest onboard` | Base · Solana · Tempo |
+| [Coinbase Agentic Wallet](https://github.com/coinbase/agentic-wallet-skills) | `npx awal@latest auth login` | Base |
+| [pay.sh](https://pay.sh) (Solana Foundation) | `pay setup` | Solana |
 
 **2. There is no step two.** No signup, no dashboard, no key. The first call returns HTTP 402
 with the exact price — that's the quote, not an error; your client pays and retries
 automatically.
 
 <details>
-<summary><b>First time with agent wallets?</b> One command, ~2 minutes — and it may pay <i>you</i>.</summary>
+<summary><b>AgentCash</b> — one command, ~2 minutes, and it may pay <i>you</i> up to $25.</summary>
 
 <br>
 
@@ -75,13 +79,49 @@ without depositing anything.
 npx agentcash fund
 ```
 
-Guided flow with card on-ramp and bridging. No minimum — $5 on Base covers thousands of reads.
+Guided flow with card on-ramp and bridging. No minimum.
 
 **3. Check it works** — ask your agent *"What is my AgentCash balance?"* If it answers with a number,
-you're done: the next twitr.sh call will quote its price in a 402 and your wallet pays automatically.
+you're done.
 
 Claude Code users can alternatively install just the MCP server:
 `claude mcp add agentcash --scope user -- npx -y agentcash@latest`
+
+</details>
+
+<details>
+<summary><b>Coinbase Agentic Wallet (awal)</b> — email OTP login, fund with Apple Pay/card.</summary>
+
+<br>
+
+**1. Sign in** (a 6-digit code lands in your email; verify it):
+
+```sh
+npx awal@latest auth login
+npx awal@latest auth verify <flowId> <otp>
+```
+
+**2. Fund it** — `npx awal@latest show` opens the Coinbase Onramp UI (Apple Pay, card, bank).
+
+**3. Done.** Your agent pays twitr.sh over x402 on Base; to pay an endpoint by hand:
+`npx awal@latest x402 pay <url>`.
+
+</details>
+
+<details>
+<summary><b>pay.sh</b> — Solana Foundation's payment layer; wraps your agent CLI.</summary>
+
+<br>
+
+**1. Set up** the wallet, then wrap the tool you use:
+
+```sh
+pay setup
+pay claude   # or: pay curl https://twitr.sh/api/tools/x_read ...
+```
+
+`pay` detects the 402/MPP challenge, asks your local wallet to sign, and retries with
+payment proof — USDC on Solana. twitr.sh accepts Solana x402 natively.
 
 </details>
 
