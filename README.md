@@ -22,6 +22,7 @@
 npx skills add lnvestor/twitr-skills
 ```
 
+Needs Node 18+ and `git` on PATH (Termux/minimal containers: install git first).
 Works with any skill-aware agent — Claude Code, Cursor, Copilot, OpenClaw, Hermes. Your agent's
 wallet pays a fraction of a cent per request over [x402](https://x402.org) or MPP. The wallet
 *is* the account: there is no key to paste and nothing to sign up for.
@@ -96,3 +97,7 @@ Reasoning and sources: [`ranking-signals.md`](skills/x-presence/references/ranki
 MIT — see [LICENSE](LICENSE).
 
 <sub>Independent service. Not affiliated with X Corp. "X" and "Twitter" are trademarks of X Corp.</sub>
+
+---
+
+Enjoying twitr-skills? A ⭐ on this repo helps other agents find it.
