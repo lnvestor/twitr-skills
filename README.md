@@ -1,65 +1,81 @@
 <div align="center">
 
-<img src="https://twitr.sh/icon.svg" width="72" alt="twitr.sh">
+<img src="https://twitr.sh/icon.svg" width="80" alt="twitr.sh">
 
 # twitr.sh agent skills
 
 **X/Twitter for AI agents — paid per call in USDC. No API key, no signup, no subscription.**
 
 [![skills.sh](https://skills.sh/b/lnvestor/twitr-skills)](https://skills.sh/lnvestor/twitr-skills)
-[![Skills](https://img.shields.io/badge/skills-5-111?style=flat-square)](#the-skills)
+[![Skills](https://img.shields.io/badge/skills-5-111?style=flat-square)](#-the-skills)
 [![Payment](https://img.shields.io/badge/x402%20%C2%B7%20MPP-USDC-111?style=flat-square)](https://x402.org)
 [![Networks](https://img.shields.io/badge/Base%20%C2%B7%20Solana%20%C2%B7%20Tempo-111?style=flat-square)](https://twitr.sh/.well-known/x402)
 [![License](https://img.shields.io/badge/license-MIT-111?style=flat-square)](LICENSE)
 
-[Install](#install) · [The skills](#the-skills) · [Setup](#setup) · [Pricing](#what-it-costs) · [Docs](https://twitr.sh/docs)
+[Start in 60 seconds](#-start-in-60-seconds) · [Ideas](#-what-can-my-agent-do) · [The skills](#-the-skills) · [Wallets](#-wallet-setup) · [Pricing](#-what-it-costs) · [Links](#-links)
 
 </div>
 
 ---
 
+## ⚡ Start in 60 seconds
+
+**1 · Install the skills** (needs Node 18+ and `git` on PATH):
+
 ```sh
 npx skills add lnvestor/twitr-skills
 ```
 
-Needs Node 18+ and `git` on PATH (Termux/minimal containers: install git first).
-Works with any skill-aware agent — Claude Code, Cursor, Copilot, OpenClaw, Hermes. Your agent's
-wallet pays a fraction of a cent per request over [x402](https://x402.org) or MPP. The wallet
-*is* the account: there is no key to paste and nothing to sign up for.
+**2 · Get a wallet.** Any x402/MPP wallet works — each one's own documented command:
 
-## The skills
+| | Wallet | Try it | Pays on |
+|:--|:--|:--|:--|
+| <img src="https://twitr.sh/wallets/agentcash.svg" width="16" alt=""> | [AgentCash](https://agentcash.dev) ⭐ | `npx agentcash try https://twitr.sh` | Base · Solana · Tempo |
+| <img src="https://twitr.sh/wallets/awal.png" width="16" alt=""> | [awal](https://github.com/coinbase/agentic-wallet-skills) (Coinbase) | `npx awal x402 bazaar search twitr.sh` | Base |
+| <img src="https://twitr.sh/wallets/paysh.png" width="16" alt=""> | [pay.sh](https://pay.sh) (Solana Foundation) | `pay curl https://twitr.sh` | Solana |
+| <img src="https://twitr.sh/wallets/poncho.svg" width="16" alt=""> | [Poncho](https://tryponcho.com) | [tryponcho.com/m/twitr.sh](https://tryponcho.com/m/twitr.sh) | — |
+| <img src="https://twitr.sh/wallets/circle.ico" width="16" alt=""> | [Circle Agent Wallet](https://www.circle.com) | `circle services search "twitr.sh"` | — |
 
-Five focused skills, each with explicit trigger boundaries so they don't fire over each other.
+First time with agent wallets? → [Wallet setup](#-wallet-setup) has step-by-step guides (AgentCash's onboarding bonus can even fund you **up to $25 for free**).
+
+**3 · Ask your agent something.** The first call returns HTTP 402 with the exact price — that's the quote, not an error. Your wallet pays and retries automatically. $5 covers thousands of reads.
+
+## 💡 What can my agent do?
+
+Copy-paste any of these once the skills are installed:
+
+> *"What is **@vercel** posting about this week?"*
+
+> *"Search X for what people are saying about **my product** — top 50 by likes, English only."*
+
+> *"**Watch @competitor** and tell me the moment they announce something."* — a real-time monitor; events reach your agent by free polling or signed webhook
+
+> *"Draft 3 tweet variants announcing **our launch** in my voice — I'll pick one, then post it."*
+
+> *"Export **everyone who replied** to this tweet as a dataset."*
+
+> *"Run my X presence: watch these 3 topics, queue drafts every morning, replies wait for my approval."*
+
+## 📦 The skills
+
+Five focused skills with explicit trigger boundaries, so they don't fire over each other.
 
 | | Skill | What it does |
 |:--|:--|:--|
-| ⭐ | **`x-presence`** | Unattended presence — watch topics, draft in your voice, publish on a schedule, queue replies for approval. |
+| ⭐ | **`x-presence`** | Unattended presence — watch topics, draft in your voice, publish on a schedule, queue replies for approval. **Start here** — it drives the others internally. |
 | 🔎 | `x-twitter-data` | Live reads — tweets, profiles, search, timelines, lists, communities, trends. |
 | 🔔 | `x-twitter-monitor` | Real-time monitors, delivered by free polling or HMAC-signed webhooks. |
 | ✍️ | `x-twitter-publish` | Draft with AI, then post, reply, or quote through a connected account. |
 | 📦 | `x-twitter-research` | Bulk exports — followers, repliers, reposters — as downloadable datasets. |
 
 Install one instead of all five with `--skill <name>`.
-**Start with `x-presence`** — it drives the others' endpoints internally.
 
-## Setup
+Scheduling `x-presence`? See [`scheduling.md`](skills/x-presence/references/scheduling.md) — verified commands for Claude Code routines, Hermes cron, and OpenClaw cron.
 
-**1. A wallet.** Any x402/MPP-capable wallet works — pick one below. Fund it with a few
-dollars of USDC; reads cost $0.0012–0.012 each, so **$5 covers thousands of calls**, and your
-client's per-call cap is a hard spend limit.
-
-| Wallet | Start with | Pays on |
-|:--|:--|:--|
-| [AgentCash](https://agentcash.dev) ⭐ recommended | `npx agentcash@latest onboard` | Base · Solana · Tempo |
-| [Coinbase Agentic Wallet](https://github.com/coinbase/agentic-wallet-skills) | `npx awal@latest auth login` | Base |
-| [pay.sh](https://pay.sh) (Solana Foundation) | `pay setup` | Solana |
-
-**2. There is no step two.** No signup, no dashboard, no key. The first call returns HTTP 402
-with the exact price — that's the quote, not an error; your client pays and retries
-automatically.
+## 👛 Wallet setup
 
 <details>
-<summary><b>AgentCash</b> — one command, ~2 minutes, and it may pay <i>you</i> up to $25.</summary>
+<summary><img src="https://twitr.sh/wallets/agentcash.svg" width="14" alt=""> <b>AgentCash</b> — one command, ~2 minutes, and it may pay <i>you</i> up to $25.</summary>
 
 <br>
 
@@ -90,7 +106,7 @@ Claude Code users can alternatively install just the MCP server:
 </details>
 
 <details>
-<summary><b>Coinbase Agentic Wallet (awal)</b> — email OTP login, fund with Apple Pay/card.</summary>
+<summary><img src="https://twitr.sh/wallets/awal.png" width="14" alt=""> <b>Coinbase Agentic Wallet (awal)</b> — email OTP login, fund with Apple Pay/card.</summary>
 
 <br>
 
@@ -109,7 +125,7 @@ npx awal@latest auth verify <flowId> <otp>
 </details>
 
 <details>
-<summary><b>pay.sh</b> — Solana Foundation's payment layer; wraps your agent CLI.</summary>
+<summary><img src="https://twitr.sh/wallets/paysh.png" width="14" alt=""> <b>pay.sh</b> — Solana Foundation's payment layer; wraps your agent CLI.</summary>
 
 <br>
 
@@ -125,11 +141,9 @@ payment proof — USDC on Solana. twitr.sh accepts Solana x402 natively.
 
 </details>
 
-Scheduling `x-presence`? See
-[`scheduling.md`](skills/x-presence/references/scheduling.md) — verified commands for Claude Code
-routines, Hermes cron, and OpenClaw cron.
+Your client's per-call cap is a hard spend limit — no call can exceed it, and **failed calls are never charged**.
 
-## What it costs
+## 💸 What it costs
 
 | Action | Price |
 |:--|--:|
@@ -140,10 +154,9 @@ routines, Hermes cron, and OpenClaw cron.
 | A monitor | ~$0.025 / hour |
 
 A typical week running `x-presence` — two monitors, a dozen replies, a few posts — is about
-**$9**. Failed calls are never charged, and every 402 quotes the exact price before your wallet
-signs anything.
+**$9**. Every 402 quotes the exact price before your wallet signs anything.
 
-## What these skills will not do
+## 🚫 What these skills will not do
 
 No automated following, unfollowing, or liking, and no keyword-triggered replies.
 
@@ -154,7 +167,7 @@ the account. The prohibited actions are omitted from the skills rather than mere
 Reasoning and sources: [`ranking-signals.md`](skills/x-presence/references/ranking-signals.md) ·
 [`x-rules.md`](skills/x-presence/references/x-rules.md)
 
-## Discovery
+## 🔗 Links
 
 | | |
 |:--|:--|
@@ -163,6 +176,7 @@ Reasoning and sources: [`ranking-signals.md`](skills/x-presence/references/ranki
 | OpenAPI 3.1 | https://twitr.sh/openapi.json |
 | MCP | `POST https://twitr.sh/api/mcp` |
 | Payment discovery | [x402](https://twitr.sh/.well-known/x402) · [MPP](https://twitr.sh/.well-known/mpp.json) |
+| Explorer listings | [x402scan](https://www.x402scan.com) · [agentcash](https://agentcash.dev) |
 
 ## License
 
