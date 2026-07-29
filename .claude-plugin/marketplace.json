@@ -1,0 +1,38 @@
+{
+  "name": "twitr",
+  "description": "X (Twitter) skills for Claude Code — paid per call in USDC, no API key and no developer account.",
+  "owner": {
+    "name": "twitr.sh",
+    "url": "https://twitr.sh"
+  },
+  "plugins": [
+    {
+      "name": "twitr-skills",
+      "displayName": "X (Twitter) skills",
+      "source": "./",
+      "description": "Five X/Twitter skills for Claude Code — read tweets, search, bulk exports, real-time monitors, and posting through a connected account. Paid per call in USDC. No X developer account, no API keys, no OAuth.",
+      "version": "1.0.0",
+      "author": {
+        "name": "twitr.sh",
+        "url": "https://twitr.sh"
+      },
+      "homepage": "https://twitr.sh/skills",
+      "repository": "https://github.com/lnvestor/twitr-skills",
+      "license": "MIT",
+      "keywords": [
+        "x",
+        "twitter",
+        "x-twitter",
+        "twitter-api",
+        "social-media",
+        "monitoring",
+        "webhooks",
+        "x402",
+        "usdc",
+        "pay-per-call",
+        "no-api-key"
+      ],
+      "category": "productivity"
+    }
+  ]
+}
