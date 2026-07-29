@@ -143,6 +143,11 @@ payment proof — USDC on Solana. twitr.sh accepts Solana x402 natively.
 
 Your client's per-call cap is a hard spend limit — no call can exceed it, and **failed calls are never charged**.
 
+**Connecting an X account?** Your agent never sees your password — it hands you a single-use link
+and you sign in on twitr.sh in your own browser. Your wallet owns the account; the agent's wallet
+only gets write access, and only you can revoke it. See [SECURITY.md](SECURITY.md) ·
+[full write-up](https://twitr.sh/agent-security).
+
 ## 💸 What it costs
 
 | Action | Price |
@@ -173,6 +178,7 @@ Reasoning and sources: [`ranking-signals.md`](skills/x-presence/references/ranki
 |:--|:--|
 | Agent guide | https://twitr.sh/skill.md |
 | Docs | https://twitr.sh/docs |
+| Security model | https://twitr.sh/agent-security |
 | OpenAPI 3.1 | https://twitr.sh/openapi.json |
 | MCP | `POST https://twitr.sh/api/mcp` |
 | Payment discovery | [x402](https://twitr.sh/.well-known/x402) · [MPP](https://twitr.sh/.well-known/mpp.json) |
