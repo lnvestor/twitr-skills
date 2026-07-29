@@ -2,9 +2,10 @@
 
 <img src="https://twitr.sh/icon.svg" width="80" alt="twitr.sh">
 
-# twitr.sh agent skills
+# X (Twitter) skills for Claude Code — no API key, no developer account
 
-**X/Twitter for AI agents — paid per call in USDC. No API key, no signup, no subscription.**
+**Five installable X/Twitter skills for Claude Code, Cursor, OpenClaw and Hermes — paid per call
+in USDC. No X developer account, no API keys, no OAuth, no signup, no subscription.**
 
 [![skills.sh](https://skills.sh/b/lnvestor/twitr-skills)](https://skills.sh/lnvestor/twitr-skills)
 [![Skills](https://img.shields.io/badge/skills-5-111?style=flat-square)](#-the-skills)
@@ -20,10 +21,21 @@
 
 ## ⚡ Start in 60 seconds
 
+Most X/Twitter skills wrap the official API, so the setup is yours: register an X developer
+account, create an app, complete OAuth, store the tokens, and pay X directly. These skip all of
+it — your agent's wallet pays per request, and that payment *is* the authentication.
+
 **1 · Install the skills** (needs Node 18+ and `git` on PATH):
 
 ```sh
 npx skills add lnvestor/twitr-skills
+```
+
+Claude Code users can install from the plugin marketplace instead — either path works:
+
+```sh
+/plugin marketplace add lnvestor/twitr-skills
+/plugin install twitr-skills@twitr
 ```
 
 **2 · Get a wallet.** Any x402/MPP wallet works — each one's own documented command:
@@ -62,11 +74,11 @@ Five focused skills with explicit trigger boundaries, so they don't fire over ea
 
 | | Skill | What it does |
 |:--|:--|:--|
-| ⭐ | **`x-presence`** | Unattended presence — watch topics, draft in your voice, publish on a schedule, queue replies for approval. **Start here** — it drives the others internally. |
-| 🔎 | `x-twitter-data` | Live reads — tweets, profiles, search, timelines, lists, communities, trends. |
-| 🔔 | `x-twitter-monitor` | Real-time monitors, delivered by free polling or HMAC-signed webhooks. |
-| ✍️ | `x-twitter-publish` | Draft with AI, then post, reply, or quote through a connected account. |
-| 📦 | `x-twitter-research` | Bulk exports — followers, repliers, reposters — as downloadable datasets. |
+| ⭐ | **[`x-presence`](https://twitr.sh/skills/x-presence)** | Unattended presence — watch topics, draft in your voice, publish on a schedule, queue replies for approval. **Start here** — it drives the others internally. |
+| 🔎 | [`x-twitter-data`](https://twitr.sh/skills/x-twitter-data) | Live reads — tweets, profiles, search, timelines, lists, communities, trends. |
+| 🔔 | [`x-twitter-monitor`](https://twitr.sh/skills/x-twitter-monitor) | Real-time monitors, delivered by free polling or HMAC-signed webhooks. |
+| ✍️ | [`x-twitter-publish`](https://twitr.sh/skills/x-twitter-publish) | Draft with AI, then post, reply, or quote through a connected account. |
+| 📦 | [`x-twitter-research`](https://twitr.sh/skills/x-twitter-research) | Bulk exports — followers, repliers, reposters — as downloadable datasets. |
 
 Install one instead of all five with `--skill <name>`.
 
@@ -176,6 +188,7 @@ Reasoning and sources: [`ranking-signals.md`](skills/x-presence/references/ranki
 
 | | |
 |:--|:--|
+| All five skills | https://twitr.sh/skills |
 | Agent guide | https://twitr.sh/skill.md |
 | Docs | https://twitr.sh/docs |
 | Security model | https://twitr.sh/agent-security |
