@@ -1,8 +1,8 @@
 {
   "name": "twitr-skills",
   "displayName": "X (Twitter) skills",
-  "version": "1.0.0",
-  "description": "Five X/Twitter skills for Claude Code — read tweets, search, bulk exports, real-time monitors, and posting through a connected account. Paid per call in USDC. No X developer account, no API keys, no OAuth.",
+  "version": "1.1.0",
+  "description": "Six X/Twitter skills for Claude Code \u2014 read tweets, search, bulk exports, real-time monitors, and posting through a connected account. Paid per call in USDC. No X developer account, no API keys, no OAuth.",
   "author": {
     "name": "twitr.sh",
     "url": "https://twitr.sh"
@@ -21,6 +21,10 @@
     "x402",
     "usdc",
     "pay-per-call",
-    "no-api-key"
+    "no-api-key",
+    "twitter-automation",
+    "twitter-bot",
+    "tweet-scheduler",
+    "x-automation"
   ]
 }

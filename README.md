@@ -4,7 +4,7 @@
 
 # X (Twitter) skills for Claude Code — no API key, no developer account
 
-**Five installable X/Twitter skills for Claude Code, Cursor, OpenClaw and Hermes — paid per call
+**Six installable X/Twitter skills for Claude Code, Cursor, OpenClaw and Hermes — paid per call
 in USDC. No X developer account, no API keys, no OAuth, no signup, no subscription.**
 
 [![skills.sh](https://skills.sh/b/lnvestor/twitr-skills)](https://skills.sh/lnvestor/twitr-skills)
@@ -70,17 +70,18 @@ Copy-paste any of these once the skills are installed:
 
 ## 📦 The skills
 
-Five focused skills with explicit trigger boundaries, so they don't fire over each other.
+Six focused skills with explicit trigger boundaries, so they don't fire over each other.
 
 | | Skill | What it does |
 |:--|:--|:--|
 | ⭐ | **[`x-presence`](https://twitr.sh/skills/x-presence)** | Unattended presence — watch topics, draft in your voice, publish on a schedule, queue replies for approval. **Start here** — it drives the others internally. |
+| 🤖 | [`twitter-automation`](https://twitr.sh/skills/twitter-automation) | The automation builder — describe the automation you want (auto-reply, scheduler, watcher, engagement) and it designs, prices, and wires it from the primitives. |
 | 🔎 | [`x-twitter-data`](https://twitr.sh/skills/x-twitter-data) | Live reads — tweets, profiles, search, timelines, lists, communities, trends. |
 | 🔔 | [`x-twitter-monitor`](https://twitr.sh/skills/x-twitter-monitor) | Real-time monitors, delivered by free polling or HMAC-signed webhooks. |
 | ✍️ | [`x-twitter-publish`](https://twitr.sh/skills/x-twitter-publish) | Draft with AI, then post, reply, or quote through a connected account. |
 | 📦 | [`x-twitter-research`](https://twitr.sh/skills/x-twitter-research) | Bulk exports — followers, repliers, reposters — as downloadable datasets. |
 
-Install one instead of all five with `--skill <name>`.
+Install one instead of all six with `--skill <name>`.
 
 Scheduling `x-presence`? See [`scheduling.md`](skills/x-presence/references/scheduling.md) — verified commands for Claude Code routines, Hermes cron, and OpenClaw cron.
 
@@ -175,11 +176,14 @@ A typical week running `x-presence` — two monitors, a dozen replies, a few pos
 
 ## 🚫 What these skills will not do
 
-No automated following, unfollowing, or liking, and no keyword-triggered replies.
+The presence and publish skills contain no automated following, unfollowing, or liking, and no
+keyword-triggered replies.
 
 X prohibits these by name, and its published ranking weights show follows aren't scored at all
 while a single report scores **−369.0** — so the banned tactics cost reach *as well as* risking
-the account. The prohibited actions are omitted from the skills rather than merely discouraged.
+the account. `twitter-automation` exposes the full action set for users who need it, but it
+prices every design up front, requires explicit confirmation, and warns when a design is
+spam-shaped enough to risk the account.
 
 Reasoning and sources: [`ranking-signals.md`](skills/x-presence/references/ranking-signals.md) ·
 [`x-rules.md`](skills/x-presence/references/x-rules.md)
@@ -188,7 +192,7 @@ Reasoning and sources: [`ranking-signals.md`](skills/x-presence/references/ranki
 
 | | |
 |:--|:--|
-| All five skills | https://twitr.sh/skills |
+| All six skills | https://twitr.sh/skills |
 | Agent guide | https://twitr.sh/skill.md |
 | Docs | https://twitr.sh/docs |
 | Security model | https://twitr.sh/agent-security |
