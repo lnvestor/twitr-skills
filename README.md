@@ -8,12 +8,12 @@
 in USDC. No X developer account, no API keys, no OAuth, no signup, no subscription.**
 
 [![skills.sh](https://skills.sh/b/lnvestor/twitr-skills)](https://skills.sh/lnvestor/twitr-skills)
-[![Skills](https://img.shields.io/badge/skills-5-111?style=flat-square)](#-the-skills)
+[![Skills](https://img.shields.io/badge/skills-6-111?style=flat-square)](#-the-skills)
 [![Payment](https://img.shields.io/badge/x402%20%C2%B7%20MPP-USDC-111?style=flat-square)](https://x402.org)
 [![Networks](https://img.shields.io/badge/Base%20%C2%B7%20Solana%20%C2%B7%20Tempo-111?style=flat-square)](https://twitr.sh/.well-known/x402)
 [![License](https://img.shields.io/badge/license-MIT-111?style=flat-square)](LICENSE)
 
-[Start in 60 seconds](#-start-in-60-seconds) · [Ideas](#-what-can-my-agent-do) · [The skills](#-the-skills) · [Wallets](#-wallet-setup) · [Pricing](#-what-it-costs) · [Links](#-links)
+[Start in 60 seconds](#-start-in-60-seconds) · [Ideas](#-what-can-my-agent-do) · [The skills](#-the-skills) · [Wallets](#-wallet-setup) · [Scraper API](#-use-it-as-a-twitter-scraper-api) · [Pricing](#-what-it-costs) · [Links](#-links)
 
 </div>
 
@@ -161,12 +161,63 @@ and you sign in on twitr.sh in your own browser. Your wallet owns the account; t
 only gets write access, and only you can revoke it. See [SECURITY.md](SECURITY.md) ·
 [full write-up](https://twitr.sh/agent-security).
 
+## 🐍 Use it as a Twitter scraper API
+
+No agent? The same tools are a plain HTTP **Twitter / X scraper API**: search tweets, read
+profiles and timelines, export followers, replies and likes, pull lists and communities. Every
+endpoint is `POST https://twitr.sh/api/tools/{tool}` with a flat JSON body.
+
+Two ways to pay, same prices:
+
+- **Card balance + API key.** Sign in at [twitr.sh/dashboard](https://twitr.sh/dashboard) with
+  Google, top up by card, create a `tw_live_…` key, and send it as a Bearer token.
+- **Wallet, no account.** Call without credentials, get HTTP 402 with the exact price, pay in
+  USDC (x402 on Base or Solana, MPP on Tempo), retry. x402-aware clients do this automatically.
+
+**curl**
+
+```sh
+curl -X POST https://twitr.sh/api/tools/x_search \
+  -H "Authorization: Bearer $TWITR_API_KEY" \
+  -H "content-type: application/json" \
+  -d '{"q":"from:nasa since:2026-01-01","queryType":"Latest","resultsLimit":20}'
+```
+
+**Python** — [`examples/python/search_tweets.py`](examples/python/search_tweets.py)
+
+```python
+import os, requests
+
+r = requests.post(
+    "https://twitr.sh/api/tools/x_search",
+    headers={"Authorization": f"Bearer {os.environ['TWITR_API_KEY']}"},
+    json={"q": "from:nasa", "queryType": "Latest", "resultsLimit": 20},
+)
+for tweet in r.json()["items"]:
+    print(tweet["createdAt"], tweet["text"][:80])
+```
+
+**Node** — [`examples/node/search-tweets.mjs`](examples/node/search-tweets.mjs)
+
+```js
+const res = await fetch("https://twitr.sh/api/tools/x_search", {
+  method: "POST",
+  headers: { authorization: `Bearer ${process.env.TWITR_API_KEY}`, "content-type": "application/json" },
+  body: JSON.stringify({ q: "from:nasa", queryType: "Latest", resultsLimit: 20 }),
+});
+for (const t of (await res.json()).items) console.log(t.createdAt, t.text.slice(0, 80));
+```
+
+Volume tools bill per returned item and need `resultsLimit`, so you never pay for more than you
+asked for. Full tool list and inputs: [twitr.sh/tools](https://twitr.sh/tools) ·
+[OpenAPI](https://twitr.sh/openapi.json).
+
 ## 💸 What it costs
 
 | Action | Price |
 |:--|--:|
 | Reading events from a monitor | **free** |
-| Drafting a post | ~$0.001 |
+| Drafting a post | ~$0.0024 |
 | A read or search | ~$0.0012 / item |
 | A post or reply | $0.036 |
 | A monitor | ~$0.025 / hour |
